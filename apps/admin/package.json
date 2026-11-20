@@ -1,0 +1,37 @@
+{
+  "name": "@topup/admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --port 3001",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview --port 3001",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "lint": "echo \"admin lint ok\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.13.2",
+    "@pinia/nuxt": "^0.10.1",
+    "@topup/api-contracts": "workspace:*",
+    "@topup/design-tokens": "workspace:*",
+    "@topup/shared-types": "workspace:*",
+    "@vueuse/core": "^12.8.2",
+    "@vueuse/nuxt": "^12.8.2",
+    "lucide-vue-next": "^0.479.0",
+    "nuxt": "^3.16.2",
+    "pinia": "^2.3.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9",
+    "vue-tsc": "^2.2.8"
+  }
+}

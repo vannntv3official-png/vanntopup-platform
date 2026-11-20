@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Cambodia Game Top-Up Platform API
+  version: 1.0.0
+  description: Production REST API for automated Cambodia game currency top-up (USD & KHR, KHQR, resilient supplier fulfillment, double-entry ledger, RBAC admin).
+servers:
+  - url: http://127.0.0.1:8000/api/v1
+    description: Local Development API
+paths:
+  /health:
+    get:
+      summary: Service & database health check
+      responses:
+        '200': { description: Healthy }
+  /games:
+    get:
+      summary: List active games (supports q, category, featured)
+      responses:
+        '200': { description: Game catalog list }
+  /games/{slug}:
+    get:
+      summary: Get game detail, regions, dynamic fields, and packages
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Game detail }
+  /games/{slug}/validate-player:
+    post:
+      summary: Validate player account fields against game rules and supplier registry
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Player valid }
+        '422': { description: Validation failed }
+  /quotes:
+    post:
+      summary: Generate server-signed, time-limited price quote in USD or KHR
+      responses:
+        '201': { description: Signed PriceQuote }
+  /orders:
+    post:
+      summary: Create order atomically from a verified PriceQuote (idempotent)
+      responses:
+        '201': { description: Order created with secret tracking_token }
+  /orders/{orderNumber}/track:
+    get:
+      summary: Track order status (requires high-entropy tracking token or authenticated owner)
+      parameters:
+        - name: orderNumber
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Safe order summary & timeline }
+        '403': { description: Missing or invalid tracking token }
+  /orders/{orderNumber}/payment-sessions:
+    post:
+      summary: Initialize KHQR / PayWay payment session
+      parameters:
+        - name: orderNumber
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '201': { description: PaymentSession created }
+  /webhooks/payments/{provider}:
+    post:
+      summary: Server-to-server payment gateway webhook (signature verified & deduplicated)
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          schema: { type: string, enum: [mock_payway, aba_payway] }
+      responses:
+        '200': { description: Webhook processed or deduplicated }
+        '400': { description: Invalid signature or payload }
+  /admin/overview:
+    get:
+      summary: Admin operations dashboard KPIs (RBAC dashboard.view)
+      responses:
+        '200': { description: Dashboard metrics and controls }
+  /admin/orders:
+    get:
+      summary: List orders with filters (RBAC orders.view)
+      responses:
+        '200': { description: Paginated orders }
+  /admin/orders/{id}/retry-fulfillment:
+    post:
+      summary: Safe retry for definitively failed fulfillment (RBAC orders.manage)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: Retry queued }
+  /admin/orders/{id}/refund:
+    post:
+      summary: Process refund for paid order (RBAC payments.refund)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '201': { description: Refund processed }

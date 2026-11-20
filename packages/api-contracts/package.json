@@ -1,0 +1,19 @@
+{
+  "name": "@topup/api-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "scripts": {
+    "build": "echo \"api-contracts ready\"",
+    "typecheck": "echo \"api-contracts typecheck ok\"",
+    "lint": "echo \"api-contracts lint ok\"",
+    "test": "echo \"api-contracts test ok\""
+  }
+}

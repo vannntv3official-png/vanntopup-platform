@@ -1,0 +1,79 @@
+{
+  "brand": {
+    "name": "VannTopUp",
+    "tagline": "Cambodia's Automatic Game Top-Up Platform"
+  },
+  "nav": {
+    "home": "Home",
+    "games": "Games",
+    "track": "Track Order",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "account": "Account",
+    "login": "Sign In"
+  },
+  "hero": {
+    "badge": "24/7 Instant Delivery • KHQR & USD/KHR Supported",
+    "title": "Automatic Game Top-Up Built for Cambodia",
+    "subtitle": "Choose your game, verify your Player ID, pay securely via KHQR, and receive Diamonds, UC, or Tokens automatically in seconds — no game password ever required.",
+    "searchPlaceholder": "Search games (Mobile Legends, Free Fire, PUBG...)",
+    "ctaPrimary": "Top Up Now",
+    "ctaTrack": "Track Order"
+  },
+  "sections": {
+    "featuredGames": "Popular Games in Cambodia",
+    "allGames": "Game Catalog",
+    "promoTitle": "Welcome Promo for Gamers!",
+    "promoBody": "Use code KHMER10 to get 10% off (up to $2.00) on eligible top-up packages.",
+    "howItWorks": "How It Works",
+    "step1Title": "1. Select Game",
+    "step1Desc": "Pick your favorite title and server region.",
+    "step2Title": "2. Enter Player ID",
+    "step2Desc": "Provide your Player ID and verify your nickname.",
+    "step3Title": "3. Pay via KHQR",
+    "step3Desc": "Complete secure payment with ABA Mobile or Bakong KHQR.",
+    "step4Title": "4. Instant Delivery",
+    "step4Desc": "Automatic fulfillment delivers currency straight to your account."
+  },
+  "game": {
+    "selectRegion": "Select Server / Region",
+    "playerDetails": "Player Account Details",
+    "verifyPlayer": "Verify Account",
+    "verifying": "Verifying...",
+    "selectPackage": "Choose Top-Up Package",
+    "promoCode": "Promotion Code (Optional)",
+    "applyPromo": "Apply",
+    "contactOptional": "Email or Phone for Receipt (Optional)",
+    "orderSummary": "Server-Verified Price Quote",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "fee": "Payment Fee",
+    "total": "Total Payable",
+    "checkoutNow": "Proceed to Checkout",
+    "creatingOrder": "Creating Order...",
+    "maintenance": "Under Maintenance"
+  },
+  "checkout": {
+    "title": "Complete Payment",
+    "orderNumber": "Order Number",
+    "devWarning": "DEVELOPMENT PAYMENT SIMULATOR — NO REAL MONEY IS CHARGED",
+    "simulatePaid": "Simulate: Verified Payment (Paid)",
+    "simulateFailed": "Simulate: Payment Failed",
+    "simulateExpired": "Simulate: Payment Expired",
+    "saveTokenNotice": "Keep your Order Number and secret Tracking Token safe to check delivery status anytime."
+  },
+  "track": {
+    "title": "Secure Order Tracking",
+    "orderNumberLabel": "Order Number",
+    "tokenLabel": "Secret Tracking Token",
+    "submit": "Track Order",
+    "refresh": "Refresh Status",
+    "needHelp": "Need support with this order?"
+  },
+  "footer": {
+    "rights": "All rights reserved by VannTopUp Cambodia.",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "refund": "Refund Policy"
+  }
+}

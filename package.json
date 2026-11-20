@@ -1,0 +1,23 @@
+{
+  "name": "cambodia-game-topup-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production Cambodia Game Top-Up E-Commerce Platform Monorepo",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev:storefront": "pnpm --filter @topup/storefront dev",
+    "dev:admin": "pnpm --filter @topup/admin dev",
+    "build": "pnpm -r build",
+    "build:storefront": "pnpm --filter @topup/storefront build",
+    "build:admin": "pnpm --filter @topup/admin build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test:frontend": "pnpm -r test",
+    "test:backend": "cd backend && php artisan test",
+    "test:e2e": "pnpm --filter @topup/storefront test:e2e"
+  }
+}

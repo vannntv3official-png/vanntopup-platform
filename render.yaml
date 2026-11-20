@@ -1,0 +1,100 @@
+# VannTopUp — 1-Click Cloud Staging Blueprint for Render.com
+# Deploys PostgreSQL 16 + Laravel 13 API + Nuxt 3 Storefront + Nuxt 3 Admin Console
+# Docs: https://render.com/docs/blueprint-spec
+
+databases:
+  - name: vanntopup-db
+    databaseName: vanntopup
+    user: vanntopup
+    plan: free
+
+services:
+  # 1. Laravel Backend API (Docker)
+  - type: web
+    name: vanntopup-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: APP_NAME
+        value: VannTopUp
+      - key: APP_ENV
+        value: staging
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: QUOTE_SIGNING_SECRET
+        generateValue: true
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: vanntopup-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: vanntopup-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: vanntopup-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: vanntopup-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: vanntopup-db
+          property: password
+      - key: CACHE_STORE
+        value: database
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: RUN_SEED_ON_BOOT
+        value: "true"
+      - key: CORS_ALLOWED_ORIGIN_PATTERNS
+        value: "^https://.*\\.onrender\\.com$,^https://.*\\.vercel\\.app$"
+      - key: PAYMENT_DEFAULT_PROVIDER
+        value: mock_payway
+      - key: SUPPLIER_DEFAULT_ADAPTER
+        value: mock_supplier
+      - key: STOREFRONT_URL
+        value: https://vanntopup-storefront.onrender.com
+
+  # 2. Nuxt 3 Customer Storefront
+  - type: web
+    name: vanntopup-storefront
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build:storefront
+    startCommand: node apps/storefront/.output/server/index.mjs
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      - key: NUXT_PUBLIC_API_BASE
+        value: https://vanntopup-api.onrender.com/api/v1
+
+  # 3. Nuxt 3 Admin Operations Console
+  - type: web
+    name: vanntopup-admin
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build:admin
+    startCommand: node apps/admin/.output/server/index.mjs
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      - key: NUXT_PUBLIC_API_BASE
+        value: https://vanntopup-api.onrender.com/api/v1

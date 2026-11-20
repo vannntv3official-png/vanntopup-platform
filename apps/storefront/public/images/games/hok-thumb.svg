@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4C1D95"/>
+      <stop offset="0.55" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g4)"/>
+  <circle cx="300" cy="175" r="78" fill="#60A5FA" fill-opacity="0.2" stroke="#93C5FD" stroke-width="4"/>
+  <text x="300" y="190" text-anchor="middle" fill="#EFF6FF" font-family="Inter, sans-serif" font-size="36" font-weight="800">HoK</text>
+  <text x="300" y="335" text-anchor="middle" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="30" font-weight="700">HONOR OF KINGS</text>
+  <text x="300" y="366" text-anchor="middle" fill="#CBD5E1" font-family="Inter, sans-serif" font-size="16" font-weight="600">LEVEL INFINITE • TOKENS</text>
+</svg>

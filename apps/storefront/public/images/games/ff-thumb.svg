@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9A3412"/>
+      <stop offset="0.55" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g2)"/>
+  <circle cx="140" cy="110" r="130" fill="#F59E0B" fill-opacity="0.15"/>
+  <polygon points="300,75 360,210 300,265 240,210" fill="#F59E0B" fill-opacity="0.28" stroke="#FBBF24" stroke-width="4"/>
+  <text x="300" y="335" text-anchor="middle" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="30" font-weight="700">FREE FIRE</text>
+  <text x="300" y="366" text-anchor="middle" fill="#CBD5E1" font-family="Inter, sans-serif" font-size="16" font-weight="600">GARENA • DIAMONDS</text>
+</svg>
